@@ -1,0 +1,52 @@
+# Netlify configuration for Vite React SPA
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Direct static asset serving to ensure image paths are never swallowed by SPA redirect
+[[redirects]]
+  from = "/src/assets/images/*"
+  to = "/src/assets/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/assets/images/*"
+  to = "/assets/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+# Client-side SPA routing fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# HTTP Headers for image caching and CORS
+[[headers]]
+  for = "/src/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
