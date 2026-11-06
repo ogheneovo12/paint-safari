@@ -1,0 +1,6 @@
+{
+  "name": "African Safari Wildlife Coloring Book",
+  "description": "Interactive children's coloring book with 100 African safari wildlife coloring sheets in uniform friendly cartoon style: lions, elephants, giraffes, zebras, monkeys, birds, reptiles, baby animals, and safari adventures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
